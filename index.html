@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Perencanaan Keuangan - OOP JS</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <h1>Perencanaan Keuangan</h1>
+    <p class="lead">Catat pemasukan (income) dan pengeluaran (outcome) tanpa database — contoh OOP JavaScript.</p>
+  </header>
+
+  <main class="container">
+    <section class="summary" aria-live="polite">
+      <div class="card">
+        <h2>Ringkasan</h2>
+        <div class="totals">
+          <div class="total-block">
+            <div class="label">Total Income</div>
+            <div id="total-income" class="value">Rp 0</div>
+          </div>
+          <div class="total-block">
+            <div class="label">Total Outcome</div>
+            <div id="total-outcome" class="value">Rp 0</div>
+          </div>
+          <div class="total-block balance">
+            <div class="label">Saldo</div>
+            <div id="balance" class="value">Rp 0</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="forms">
+      <div class="card">
+        <h2>Tambah Pemasukan (Income)</h2>
+        <form id="income-form" class="form">
+          <label>
+            Kategori
+            <select name="category" required>
+              <option value="gaji bulanan">Gaji Bulanan</option>
+              <option value="freelance">Freelance</option>
+              <option value="lainnya">Pemasukan Lainnya</option>
+            </select>
+          </label>
+
+          <label>
+            Jumlah (angka)
+            <input name="amount" type="number" min="0" step="1" required />
+          </label>
+
+          <label>
+            Keterangan
+            <input name="description" type="text" placeholder="mis. gaji perusahaan X" />
+          </label>
+
+          <div class="form-actions">
+            <button type="submit" class="btn primary">Tambah Income</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="card">
+        <h2>Tambah Pengeluaran (Outcome)</h2>
+        <form id="outcome-form" class="form">
+          <label>
+            Kategori
+            <select name="category" required>
+              <option value="belanja bulanan">Belanja Bulanan</option>
+              <option value="operasional kantor">Operasional Kantor</option>
+              <option value="uang jajan anak">Uang Jajan Anak</option>
+              <option value="hiburan mingguan">Hiburan Mingguan</option>
+              <option value="biaya tak terduga">Biaya Tak Terduga</option>
+            </select>
+          </label>
+
+          <label>
+            Jumlah (angka)
+            <input name="amount" type="number" min="0" step="1" required />
+          </label>
+
+          <label>
+            Keterangan
+            <input name="description" type="text" placeholder="mis. belanja pasar" />
+          </label>
+
+          <div class="form-actions">
+            <button type="submit" class="btn danger">Tambah Outcome</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="lists">
+      <div class="card">
+        <h2>Daftar Income</h2>
+        <ul id="income-list" class="list" aria-live="polite"></ul>
+      </div>
+
+      <div class="card">
+        <h2>Daftar Outcome</h2>
+        <ul id="outcome-list" class="list" aria-live="polite"></ul>
+      </div>
+    </section>
+
+    <section class="controls">
+      <button id="seed-data" class="btn">Isi Data Contoh</button>
+      <button id="clear-data" class="btn">Hapus Semua Data</button>
+      <button id="export-excel" class="btn primary">Ekspor Excel</button>
+      <label for="import-excel" class="btn">
+        Impor Excel
+        <input type="file" id="import-excel" accept=".xlsx, .xls" hidden />
+      </label>
+    </section>
+
+
+    <footer class="footer">
+      <small>Dibuat dengan prinsip OOP, data disimpan sementara di memori (tidak persist ke server).</small>
+    </footer>
+  </main>
+<!-- Library SheetJS untuk baca/tulis Excel -->
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.19.3/dist/xlsx.full.min.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
